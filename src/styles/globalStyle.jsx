@@ -2,9 +2,10 @@ import styled, {css} from "styled-components";
 
 export const Container = styled.div`
     flex-grow:1;
-    margin: 0 auto;
+    margin: 0 0;
+
     position:relative;
-    padding: 0 32px;
+    padding: 0 0;
     width: 100vw;
     height: 100vh;
     ${props => props.fluid && css`

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Flex } from '../styles/globalStyle'
-// import { HomeContainer } from '../styles/homeContainerStyle'
+import { Flex } from '../styles/globalStyle'
+import { HomeContainer } from '../styles/homeContainerStyle';
+import Header from './Header';
 
 
 const Home = () => {
@@ -36,10 +37,11 @@ const Home = () => {
 
     return (
         <Flex flexCenter>
-            <Container>
-                <>{globalMousePos.x}</>
-                <>{globalMousePos.y}</> 
-            </Container>
+            <HomeContainer>
+                {/* <>{globalMousePos.x}</>
+                <>{globalMousePos.y}</>  */}
+                <Header></Header>
+            </HomeContainer>
         </Flex>
     );
 }
