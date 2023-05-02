@@ -13,6 +13,15 @@ export const Container = styled.div`
         margin:0;
         max-width:100%;
     `}
+    @media (min-width: 640px){
+        max-height: 50%;
+    }
+    @media (min-width: 800px){
+        max-height: 50%
+    }
+    @media (min-width: 1408px){
+        max-width: 100%
+    }
 `
 
 export const Flex = styled.div`
