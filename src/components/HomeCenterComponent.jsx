@@ -47,7 +47,7 @@ const AnimerdDiscoverMotion = {
 };
 
 const CenterDiv = styled(motion.div)`
-    margin-top: 20rem;
+    padding-top: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;

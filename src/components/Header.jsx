@@ -29,7 +29,7 @@ const Header = () => {
   };
   
   return (
-    // <AppBar position="static">
+    // <AppBar position="static" sx={{background: 'black'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -39,12 +39,13 @@ const Header = () => {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 4,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.1rem',
-              color: 'inherit',
+
+              letterSpacing: '.0rem',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
@@ -118,7 +119,7 @@ const Header = () => {
           </Box>
         </Toolbar>
       </Container>
-    // </AppBar>
+    //  </AppBar>
 
   );
 }
