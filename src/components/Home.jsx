@@ -1,15 +1,14 @@
-import React from 'react'
-import { Flex } from '../styles/globalStyle'
-import { HomeContainer } from '../styles/homeContainerStyle';
+import React, { useEffect } from 'react'
 import Header from './Header';
 import HomeCenterComponent from './HomeCenterComponent';
 import leftImage from '../assets/slide01-01.png'
 import rightImage from '../assets/slide01-06.png'
 import Grid from '@mui/material/Grid';
-import { motion } from 'framer-motion';
-import { LazyMotion, domAnimation, m } from "framer-motion"
+import { motion, useMotionValue, useTransform, LazyMotion, domAnimation, m } from "framer-motion"
 import Overlay from './Overlay';
-
+import { Container } from 'react-bootstrap';
+import background from "../assets/first_background.jpg"
+import { useLayoutEffect, useRef, useState } from 'react';
 
 
 
@@ -54,47 +53,34 @@ const imageGridMotionRight = {
 };
 
 const Home = () => {
-    // const [globalMousePos, setGlobalMousePos] = useState({});
-    // const [axis, setAxis] = useState({});
 
-    // const handleMouseMove = (event) => {
-    //     const localX = ((window.innerWidth / 2) - event.clientX) / 50;
-    //     const localY = ((window.innerHeight / 2) - event.clientY ) / 50;
+    const [width, setWidth] = useState(1440);
+    const [height, setHeight] = useState(900 - 100);
+    const ref = useRef({});
+    console.log(width, " ", height);
 
-    //     setAxis({ x: localX, y: localY });
-    // };
-
-
-
-    // useEffect(() => {
-    //     const handleMouseMove = (event) => {
-    //         setGlobalMousePos({
-    //             x: event.clientX,
-    //             y: event.clientY,
-    //         });
-    //     };
-
-    //     window.addEventListener('mousemove', handleMouseMove);
-
-    //     return () => {
-    //         setAxis({x: 0, y : 0});
-    //         window.removeEventListener(
-    //             'mousemove',
-    //             handleMouseMove
-    //         );
-    //         setAxis({x: 0, y : 0});            
-    //     };
-    // }, []);
+    useLayoutEffect(() => {
+        setWidth(ref.current.scrollWidth);
+        setHeight(ref.current.scrollWidth / 1.9);
+    }, []);
 
     return (
-        <LazyMotion features={domAnimation}>
-            <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-                <Flex component={m.div} flexCenter>
-                    <HomeContainer>
-                        <Overlay />
+        <div ref={ref}>
 
-                        <Header></Header>
-                        <Grid container spacing={0}>
+        <LazyMotion features={domAnimation}  >
+            <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} >
+
+                {/* <Flex component={m.div} flexCenter> */}
+                    <Container fluid className=" p-0" style={{ backgroundImage: `url(${background})` , backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'}} >
+                        <Header />
+                        <br></br>
+                        <br></br>
+
+                        <Overlay height={height} width={width} />
+
+                        <Grid container spacing={0} >
                             <Grid sx={{
                                 display: 'flex',
                                 justifyContent: 'flex-start'
@@ -106,13 +92,14 @@ const Home = () => {
                                 animate="visible"
                                 exit="exit"
                             >
-                            <img src={leftImage}
-                                style={{display: 'block',
-                                width: '75%',
-                                // width: 'auto',
-                                height: '92%',
-                            }}
-                             height={'auto'} alt='leftSIde'/>
+                                <img src={leftImage}
+                                    style={{
+                                        display: 'block',
+                                        width: '75%',
+                                        // width: 'auto',
+                                        height: '92%',
+                                    }}
+                                    height={'auto'} alt='leftSIde' />
 
                             </Grid>
                             <Grid xs={4} md={4}>
@@ -134,10 +121,13 @@ const Home = () => {
 
                             </Grid>
                         </Grid>
-                    </HomeContainer>
-                </Flex>
+                    </Container>
+                    {/* </Flex> */}
+
             </m.div>
         </LazyMotion>
+        </div >
+
 
     );
 }

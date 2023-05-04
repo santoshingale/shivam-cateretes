@@ -3,6 +3,7 @@ import background from "../assets/first_background.jpg"
 import { Container } from "./globalStyle";
 
 export const HomeContainer = styled(Container)`
+    padding-top: 5%;
     background-image: url(${background});
     background-size: cover;
     background-position: center;
