@@ -57,11 +57,10 @@ const Home = () => {
     const [width, setWidth] = useState(1440);
     const [height, setHeight] = useState(900 - 100);
     const ref = useRef({});
-    console.log(width, " ", height);
 
     useLayoutEffect(() => {
         setWidth(ref.current.scrollWidth);
-        setHeight(ref.current.scrollWidth / 1.9);
+        setHeight(ref.current.scrollWidth / 2.2);
     }, []);
 
     return (
@@ -77,9 +76,12 @@ const Home = () => {
                         <Header />
                         <br></br>
                         <br></br>
-
-                        <Overlay height={height} width={width} />
-
+                        <motion.div  initial={{ opacity: 0 }} 
+                        animate={{ opacity: 1 }} 
+                        transition={{ duration: 3 ,delay: 1 }}>
+                        <Overlay 
+                        height={height} width={width} />
+                        </motion.div>
                         <Grid container spacing={0} >
                             <Grid sx={{
                                 display: 'flex',
